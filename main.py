@@ -1,63 +1,34 @@
 import streamlit as st
 import random
+import time
 
-# ------------------------------
-# CSS tùy chỉnh cho giao diện
-st.markdown("""
-    <style>
-        .title {
-            font-size: 40px;
-            font-weight: bold;
-            color: #4CAF50;
-            text-align: center;
-            margin-bottom: 20px;
-        }
-        .guess-box {
-            background-color: #f0f0f0;
-            padding: 30px;
-            border-radius: 15px;
-            box-shadow: 2px 2px 10px #ccc;
-        }
-        .result {
-            font-size: 20px;
-            font-weight: bold;
-        }
-    </style>
-""", unsafe_allow_html=True)
+# Cấu hình giao diện
+st.set_page_config(page_title="Vòng Quay May Mắn", page_icon="🎡", layout="centered")
 
-# ------------------------------
-# Tạo trạng thái ban đầu
-if "secret_number" not in st.session_state:
-    st.session_state.secret_number = random.randint(1, 100)
-    st.session_state.tries = 0
-    st.session_state.game_over = False
+st.title("🎡 VÒNG QUAY MAY MẮN 🎉")
 
-# ------------------------------
-# Tiêu đề đẹp
-st.markdown('<div class="title">🎮 Trò chơi Đoán Số</div>', unsafe_allow_html=True)
-st.markdown('<div class="guess-box">', unsafe_allow_html=True)
+# Danh sách phần thưởng
+rewards = [
+    "🍀 Chúc may mắn lần sau!",
+    "🎁 Thẻ cào 10K",
+    "🎉 Voucher giảm giá 20%",
+    "💸 Tiền mặt 50K",
+    "🏆 Quà đặc biệt",
+    "📦 Hộp quà bí ẩn",
+    "🍫 Bánh kẹo miễn phí",
+    "🧧 Lì xì 100K",
+]
 
-# ------------------------------
-if not st.session_state.game_over:
-    st.write("Tôi đã chọn một số bí mật từ **1 đến 100**. Hãy thử đoán nhé! 🎯")
-    guess = st.number_input("🔢 Nhập số của bạn:", min_value=1, max_value=100, step=1)
-
-    if st.button("🚀 Đoán"):
-        st.session_state.tries += 1
-        if guess < st.session_state.secret_number:
-            st.warning("📉 Số bạn đoán **nhỏ hơn** số bí mật!")
-        elif guess > st.session_state.secret_number:
-            st.warning("📈 Số bạn đoán **lớn hơn** số bí mật!")
-        else:
-            st.success(f"🎉 Tuyệt vời! Bạn đã đoán đúng sau {st.session_state.tries} lần!")
-            st.session_state.game_over = True
+# Hiển thị vòng quay giả lập
+if st.button("Quay Ngay 🎯"):
+    with st.spinner("Đang quay vòng..."):
+        for i in range(15):
+            result = random.choice(rewards)
+            st.write(f"👉 {result}")
+            time.sleep(0.1 + i*0.01)
+        final_result = random.choice(rewards)
+        time.sleep(0.5)
+        st.success(f"🎊 Kết quả: {final_result} 🎊")
 else:
-    st.balloons()
-    st.success("🎊 Trò chơi kết thúc!")
-    if st.button("🔄 Chơi lại"):
-        st.session_state.secret_number = random.randint(1, 100)
-        st.session_state.tries = 0
-        st.session_state.game_over = False
-        st.rerun()
+    st.info("Bấm nút 'Quay Ngay' để thử vận may của bạn!")
 
-st.markdown('</div>', unsafe_allow_html=True)
