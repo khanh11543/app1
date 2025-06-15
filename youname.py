@@ -5,8 +5,8 @@ import time
 st.set_page_config(page_title="Vòng Quay May Mắn", page_icon="🎡", layout="centered")
 st.title("🎡 VÒNG QUAY MAY MẮN CAO CẤP 🎁")
 
-# Hiển thị hình ảnh vòng quay
-st.image("67b1579e-14b3-49a2-9ee5-cb8dfbf94aaf.png", caption="Hãy thử vận may của bạn!", use_column_width=True)
+# ✅ Đường dẫn ảnh đúng, đặt trong cùng thư mục với file
+st.image("vong_quay.png", caption="Hãy thử vận may của bạn!", use_container_width=True)
 
 # Danh sách phần thưởng
 rewards = [
@@ -33,4 +33,3 @@ if st.button("🎯 QUAY NGAY!"):
         st.success(f"🎊 KẾT QUẢ: {final_result} 🎊")
 else:
     st.info("Ấn nút QUAY để bắt đầu thử vận may!")
-
