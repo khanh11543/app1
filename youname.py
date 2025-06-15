@@ -5,8 +5,6 @@ import time
 st.set_page_config(page_title="Vòng Quay May Mắn", page_icon="🎡", layout="centered")
 st.title("🎡 VÒNG QUAY MAY MẮN CAO CẤP 🎁")
 
-# ✅ Đường dẫn ảnh đúng, đặt trong cùng thư mục với file
-st.image("vong_quay.png", caption="Hãy thử vận may của bạn!", use_container_width=True)
 
 # Danh sách phần thưởng
 rewards = [
