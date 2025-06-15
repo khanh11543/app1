@@ -1,7 +1,7 @@
 import streamlit as st
 import random
 import time
-
+st.image("67b1579e-14b3-49a2-9ee5-cb8dfbf94aaf.png", caption="Hãy thử vận may của bạn!", use_column_width=True)
 # Cấu hình giao diện
 st.set_page_config(page_title="Vòng Quay May Mắn", page_icon="🎡", layout="centered")
 
